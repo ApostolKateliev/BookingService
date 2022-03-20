@@ -5,7 +5,7 @@ using System.Diagnostics;
 
 namespace BookingService.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
 
@@ -16,7 +16,7 @@ namespace BookingService.Controllers
 
         public IActionResult Index()
         {
-            ViewData[MessageConstant.ErrorMessage] = "Something went wrong!";
+            //ViewData[MessageConstant.ErrorMessage] = "Something went wrong!";
             return View();
         }
 
