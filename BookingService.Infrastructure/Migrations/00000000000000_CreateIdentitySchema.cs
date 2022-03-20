@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-namespace BookingService.Data.Migrations
+namespace BookingService.Infrastructure.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {

@@ -1,5 +1,5 @@
 using BookingService.Core.Constants;
-using BookingService.Data;
+using BookingService.Infrastructure.Data;
 using BookingService.ModelBinders;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

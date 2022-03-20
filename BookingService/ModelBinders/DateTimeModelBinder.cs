@@ -32,7 +32,7 @@ namespace BookingService.ModelBinders
 
                     success = true;
                 }
-                catch (FormatException fe)
+                catch (FormatException)
                 {
                     try
                     {
