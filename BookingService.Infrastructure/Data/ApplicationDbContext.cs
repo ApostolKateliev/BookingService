@@ -10,6 +10,8 @@ namespace BookingService.Infrastructure.Data
         {
         }
 
+        
+
         public DbSet<User> Users { get; set; }
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<Product> Products { get; set; }

@@ -1,27 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BookingService.Core.CustomAttributes
 {
+
     public class IsBeforeAttribute : ValidationAttribute
     {
-        //private readonly DateTime dateToCompare;
-        //public IsBeforeAttribute(string _propertyToCompare, string errorMessage ="")
-        //{
-        //    dateToCompare = _dateToCompare;
-        //    this.ErrorMessage = errorMessage;
-        //}
+        private readonly string propertyToCompare;
 
+        public IsBeforeAttribute(string _propertyToCompare, string errorMessage = "")
+        {
+            this.propertyToCompare = _propertyToCompare;
+            this.ErrorMessage = errorMessage;
+        }
 
-        //public override bool IsValid(object? value)
-        //{
-        //    if (value == null) return false; 
+        protected override ValidationResult IsValid
+            (object value, ValidationContext validationContext)
+        {
+            try
+            {
+                DateTime dateToCompare = (DateTime)validationContext
+                .ObjectType
+                .GetProperty(propertyToCompare)
+                .GetValue(validationContext.ObjectInstance);
 
-        //    return (DateTime)value < dateToCompare;
-        //}
+                if ((DateTime)value < dateToCompare)
+                {
+                    return ValidationResult.Success;
+                }
+            }
+            catch (Exception)
+            { }
+
+            return new ValidationResult(ErrorMessage);
+        }
     }
+
 }
