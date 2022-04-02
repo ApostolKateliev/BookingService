@@ -1,6 +1,7 @@
 ﻿using BookingService.Core.Contracts;
 using BookingService.Core.Services;
 using BookingService.Infrastructure.Data;
+using BookingService.Infrastructure.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookingService.Api.Extensions
@@ -10,6 +11,7 @@ namespace BookingService.Api.Extensions
         public static IServiceCollection AddApiServices(this IServiceCollection services)
         {
           
+            services.AddScoped<IApplicationDbRepository, ApplicationDbRepository>();
             services.AddScoped<IBookService, BookService>();
 
             return services;

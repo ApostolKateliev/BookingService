@@ -19,6 +19,6 @@ namespace BookingService.Core.Models
         [Required]
         [ForeignKey(nameof(Service))]
         public int ServiceId { get; set; }
-        public Service Service { get; set; }
+        public string Service { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookingService.Infrastructure.Data
+namespace BookingService.Infrastructure.Data.DataModels
 {
     public class User
     {
@@ -27,5 +27,6 @@ namespace BookingService.Infrastructure.Data
         public string PhoneNumber { get; set; }
 
         public ICollection<Vehicle> Vehicles { get; set; } = new List<Vehicle>();
+        public ICollection<Booking> Bookings { get; set; } = new List<Booking>();
     }
 }

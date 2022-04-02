@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookingService.Infrastructure.Data
+namespace BookingService.Infrastructure.Data.DataModels
 {
     public class Vehicle
     {

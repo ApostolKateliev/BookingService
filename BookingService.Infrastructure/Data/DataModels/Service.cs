@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookingService.Infrastructure.Data
+namespace BookingService.Infrastructure.Data.DataModels
 {
     public class Service
     {
@@ -15,7 +15,7 @@ namespace BookingService.Infrastructure.Data
         public int Id { get; set; }
 
         [Required]
-        public ServiceType Type { get; set; }
+        public string Type { get; set; }
 
         public TimeSpan Duration { get; set; }
 
