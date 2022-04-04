@@ -16,7 +16,7 @@ namespace BookingService.Controllers
 
         public IActionResult Index()
         {
-            //ViewData[MessageConstant.ErrorMessage] = "Something went wrong!";
+            ViewData[MessageConstant.SuccessMessage] = "You Have Successfully Logged in!";
             return View();
         }
 
