@@ -2,14 +2,14 @@
 
 namespace BookingService.Infrastructure.Data.DataModels
 {
-    public class Product
+    public class CarDetail
     {
         [Key]
         public int Id { get; set; }
 
         [Required]
-        public string Type { get; set; }
+        public string Name { get; set; }
 
-        public string Specification { get; set; }
+        public string? Specification { get; set; }
     }
 }

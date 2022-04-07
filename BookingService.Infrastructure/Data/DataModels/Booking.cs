@@ -17,9 +17,9 @@ namespace BookingService.Infrastructure.Data.DataModels
         public DateTime DateAndTime { get; set; }
 
         [Required]
-        [ForeignKey(nameof(User))]
-        public int UserId { get; set; }
-        public User User { get; set; }
+        [ForeignKey(nameof(Craftsman))]
+        public int CraftsmanId { get; set; }
+        public Craftsman Craftsman { get; set; }
 
 
         [Required]

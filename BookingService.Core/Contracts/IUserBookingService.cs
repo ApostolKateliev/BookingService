@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BookingService.Core.Contracts
 {
-    public interface IBookService
+    public interface IUserBookingService
     {
         Task BookAService(UserBooking booking);
     }

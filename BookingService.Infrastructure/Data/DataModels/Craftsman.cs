@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BookingService.Infrastructure.Data.DataModels
 {
-    public class User
+    public class Craftsman
     {
         [Key]
         public int Id { get; set; }
@@ -18,15 +18,9 @@ namespace BookingService.Infrastructure.Data.DataModels
         public string Name { get; set; }
 
         [Required]
-        [EmailAddress]
-        [StringLength(50)]
-        public string Email { get; set; }
-
-        [Required]
         [StringLength(10)]
         public string PhoneNumber { get; set; }
 
-        public ICollection<Vehicle> Vehicles { get; set; } = new List<Vehicle>();
         public ICollection<Booking> Bookings { get; set; } = new List<Booking>();
     }
 }

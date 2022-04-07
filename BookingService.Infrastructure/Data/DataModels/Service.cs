@@ -20,9 +20,9 @@ namespace BookingService.Infrastructure.Data.DataModels
         public TimeSpan Duration { get; set; }
 
         [Required]
-        [ForeignKey(nameof(Product))]
-        public int ProductId { get; set; }
-        public Product Product { get; set; }
+        [ForeignKey(nameof(CarDetail))]
+        public int CarDetailId { get; set; }
+        public CarDetail CarDetail { get; set; }
 
         [StringLength(500)]
         public string? Description { get; set; }
