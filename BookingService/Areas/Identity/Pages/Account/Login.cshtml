@@ -30,18 +30,20 @@
                 <a href="/" class="h1"><b>Booking Service</b></a>
             </div>
             <div class="card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+                <p class="login-box-msg">Log in to start your session</p>
 
                 <form id="account" method="post">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-floating">
-                        <label asp-for="Input.Email" class="form-label"></label>
                         <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
+                        <label asp-for="Input.Email" class="form-label"></label>
+                        <span class="fas fa-envelope"></span>
                         <span asp-validation-for="Input.Email" class="text-danger"></span>
                     </div>
                     <div class="form-floating">
-                        <label asp-for="Input.Password" class="form-label"></label>
                         <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
+                        <label asp-for="Input.Password" class="form-label"></label>
+                        <span class="fas fa-lock"></span>
                         <span asp-validation-for="Input.Password" class="text-danger"></span>
                     </div>
                     <div class="row">
@@ -55,6 +57,7 @@
                         </div>
                         <!-- /.col -->
                         <div class="col-4">
+
                             <button id="login-submit" type="submit" class="btn btn-primary btn-block">Log in</button>
                         </div>
                         <!-- /.col -->
@@ -73,18 +76,18 @@
 
                 <div class="col-md-6 col-md-offset-2">
                     <section>
-                        <h3>Use another service to log in.</h3>
-                        <hr />
+                        @*<h3>Use another service to log in.</h3>*@
+                        @*<hr />*@
                         @{
                             if ((Model.ExternalLogins?.Count ?? 0) != 0)
                             {
-                              
+
                                 <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                                    <div>
+                                    <div class="social-auth-links text-center">
                                         <p>
                                             @foreach (var provider in Model.ExternalLogins)
                                             {
-                                                <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                                <button type="submit" class="btn btn-block btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account"><i class="fab fa-facebook mr-2"></i> Log in using @provider.DisplayName </button>
                                             }
                                         </p>
                                     </div>
@@ -96,8 +99,8 @@
 
                 <p class="mb-1">
                     <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
-
                 </p>
+
                 <p class="mb-0">
                     <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
 
