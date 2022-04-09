@@ -29,7 +29,7 @@ namespace BookingService.Controllers
             return View();
         }
 
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> ManageUsers()
         {
             var users = await applicationUserService.GetUsersList();
