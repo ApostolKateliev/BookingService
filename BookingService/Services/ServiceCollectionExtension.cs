@@ -1,4 +1,6 @@
-﻿using BookingService.Infrastructure.Data;
+﻿using BookingService.Core.Contracts;
+using BookingService.Core.Services;
+using BookingService.Infrastructure.Data;
 using BookingService.Infrastructure.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,7 +10,9 @@ namespace BookingService.Services
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
+
             services.AddScoped<IApplicationDbRepository,ApplicationDbRepository>();
+            services.AddScoped<IApplicationUserService, ApplicationUserService>();
 
             return services;
         }
