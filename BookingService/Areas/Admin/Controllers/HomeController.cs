@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BookingService.Core.Constants;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BookingService.Areas.Admin.Controllers
 {
@@ -6,6 +7,7 @@ namespace BookingService.Areas.Admin.Controllers
     {
         public IActionResult Index()
         {
+            ViewData[MessageConstant.SuccessMessage] = "Welcome!";
             return View();
         }
     }

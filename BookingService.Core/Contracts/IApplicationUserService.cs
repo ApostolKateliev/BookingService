@@ -9,6 +9,11 @@ namespace BookingService.Core.Contracts
 {
     public interface IApplicationUserService
     {
-        Task<IEnumerable<UserList>> GetUsersList();
+        Task<IEnumerable<UserListViewModel>> GetUsersList();
+
+        Task<UserEditViewModel> GetUserForEdit(string id);
+
+        Task<bool> UpdateUser(UserEditViewModel model);
+
     }
 }
