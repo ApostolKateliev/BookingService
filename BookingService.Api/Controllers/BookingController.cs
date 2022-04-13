@@ -9,9 +9,9 @@ namespace BookingService.Api.Controllers
     [ApiController]
     public class BookingController : ControllerBase
     {
-        private readonly IUserBookingService service;
+        private readonly ICarDetailService service;
 
-        public BookingController(IUserBookingService _service)
+        public BookingController(ICarDetailService _service)
         {
             service = _service;
         }

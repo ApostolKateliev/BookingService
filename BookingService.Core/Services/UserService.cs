@@ -1,21 +1,16 @@
 ﻿using BookingService.Core.Contracts;
-using BookingService.Core.Models;
+using BookingService.Core.Models.User;
 using BookingService.Infrastructure.Data.Identity;
 using BookingService.Infrastructure.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookingService.Core.Services
 {
-    public class ApplicationUserService : IApplicationUserService
+    public class UserService : IUserService
     {
         private readonly IApplicationDbRepository repo;
 
-        public ApplicationUserService(IApplicationDbRepository _repo)
+        public UserService(IApplicationDbRepository _repo)
         {
             repo = _repo;
         }
@@ -26,9 +21,11 @@ namespace BookingService.Core.Services
             return new UserEditViewModel() 
             {
                 Id = user.Id,
+                PhoneNumber = user.PhoneNumber,
                 Name = user.Name 
             };
         }
+        
 
         public async Task<IEnumerable<UserListViewModel>> GetUsersList()
         {
@@ -37,6 +34,7 @@ namespace BookingService.Core.Services
                 {
                     Id = u.Id,
                     Name = u.Name,
+                    PhoneNumber = u.PhoneNumber,
                     Email = u.Email
                 })
                 .ToListAsync();
@@ -51,6 +49,7 @@ namespace BookingService.Core.Services
             if (user != null)
             {
                 user.Name = model.Name;
+                user.PhoneNumber = model.PhoneNumber;
                 await repo.SaveChangesAsync();
                 result = true;
             }

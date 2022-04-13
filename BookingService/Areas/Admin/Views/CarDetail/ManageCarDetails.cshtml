@@ -1,0 +1,63 @@
+﻿@model IEnumerable<CarDetailListViewModel>
+@{
+    ViewData["Title"] = "Manage Car Details";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+
+
+        <!--Table Start-->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Car Details</h3>
+
+                        <div class="card-tools">
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-hover text-nowrap">
+                            <thead>
+                                <tr>
+
+                                    <th>Car Detail</th>
+                                    <th>Specification</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var detail in Model)
+                                {
+                                    <tr>
+
+                                        <td>@detail.Name</td>
+                                        <td>@detail.Specification</td>
+                                        <td>
+                                            <a asp-area="admin" asp-action="edit" asp-controller="cardetail" asp-route-id="@detail.Id" class="btn btn-block bg-gradient-info btn-xs">Edit</a>
+                                        </td>
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+        <!--Table ENd-->
+        <form>
+        <div class="card-footer">
+            <button asp-area="admin" asp-controller="CarDetail" asp-action="AddDetail" type="submit" class="btn btn-primary">Add New Car Detail</button>
+        </div>
+        </form>
+
+</body>
+</html>

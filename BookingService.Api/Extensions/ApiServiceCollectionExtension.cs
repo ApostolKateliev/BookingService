@@ -12,7 +12,7 @@ namespace BookingService.Api.Extensions
         {
           
             services.AddScoped<IApplicationDbRepository, ApplicationDbRepository>();
-            services.AddScoped<IUserBookingService, UserBookingService>();
+            services.AddScoped<ICarDetailService, UserBookingService>();
 
             return services;
         }

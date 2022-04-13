@@ -115,8 +115,14 @@ namespace BookingService.Areas.Identity.Pages.Account
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
+                    //var user = await _signInManager.UserManager.FindByEmailAsync(Input.Email);
+                    //var s = await _signInManager.UserManager.IsInRoleAsync(user, "Admin");
+
                     _logger.LogInformation("User logged in.");
+                    
+
                     return LocalRedirect(returnUrl);
+                    
                 }
                 if (result.RequiresTwoFactor)
                 {

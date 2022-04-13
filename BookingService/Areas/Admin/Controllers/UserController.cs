@@ -1,6 +1,6 @@
 ﻿using BookingService.Core.Constants;
 using BookingService.Core.Contracts;
-using BookingService.Core.Models;
+using BookingService.Core.Models.User;
 using BookingService.Infrastructure.Data.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -13,21 +13,16 @@ namespace BookingService.Areas.Admin.Controllers
 
         private readonly UserManager<ApplicationUser> userManager;
 
-        private readonly IApplicationUserService applicationUserService;
+        private readonly IUserService applicationUserService;
 
         public UserController(
             RoleManager<IdentityRole> _roleManager,
             UserManager<ApplicationUser> _userManager,
-            IApplicationUserService _applicationUserService)
+            IUserService _applicationUserService)
         {
             roleManager = _roleManager;
             userManager = _userManager;
             applicationUserService = _applicationUserService;
-        }
-
-        public IActionResult Index()
-        {
-            return View();
         }
 
         

@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace BookingService.Core.Models
 {
-    public class UserListViewModel
+    public class CarDetailEditViewModel
     {
-        public string Id { get; set; }
-        public string Email { get; set; }
+        public int Id { get; set; }
 
-        public string Name { get; set; }
+        [Required]
+        public string? Name { get; set; }
 
-        
+        public string? Specification { get; set; }
     }
 }

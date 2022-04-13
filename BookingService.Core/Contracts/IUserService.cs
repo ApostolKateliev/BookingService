@@ -1,4 +1,4 @@
-﻿using BookingService.Core.Models;
+﻿using BookingService.Core.Models.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BookingService.Core.Contracts
 {
-    public interface IApplicationUserService
+    public interface IUserService
     {
         Task<IEnumerable<UserListViewModel>> GetUsersList();
 

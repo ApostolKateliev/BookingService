@@ -27,6 +27,8 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 
+
+
 builder.Services.AddAuthentication().AddFacebook(options =>
 {
     options.AppId = builder.Configuration.GetValue<string>("Facebook:AppId");
@@ -62,17 +64,19 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+//Authentication should be first
 app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "Area",
     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 app.MapRazorPages();
 
 app.Run();
