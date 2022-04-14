@@ -54,18 +54,21 @@ namespace BookingService.Core.Services
         public async Task<bool> AddDetail(AddDetailViewModel model)
         {
             bool result = false;
+
             var newDetail = new CarDetail
             {
                 Name = model.Name,
                 Specification = model.Specification
             };
-            if (newDetail != null)
+
+            if (model != null)
             {
-                await repo.AddAsync<CarDetail>(newDetail);
+
+                await repo.AddAsync(newDetail);
                 await repo.SaveChangesAsync();
                 result = true;
             }
-            return result;
+             return result;
         }
     }
 }

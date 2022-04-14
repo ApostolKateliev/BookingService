@@ -1,0 +1,46 @@
+﻿@model UserRoleViewModel
+@{
+    ViewData["Title"] = "Add or Remove Roles";
+    var items = (List<SelectListItem>)ViewBag.RoleItems;
+}
+
+<!--<div class="form-group">
+<label>Select</label>
+<select class="form-control">
+<option>option 1</option>
+<option>option 2</option>
+<option>option 3</option>
+<option>option 4</option>
+<option>option 5</option>
+</select>
+</div>-->
+
+<div class="row">
+    <div class="col-4">
+        <div class="form-group">
+        <form id="roles" method="post" >
+            <input type="hidden" name="Id" value="@Model.Id" />
+            <input type="hidden" name="Name" value="@Model.Name" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating">
+                <h5>For User with Name: @Html.DisplayFor(m => m.Name)</h5>
+            </div>
+            <div class="form-floating">
+                <div class="form-group">
+                    <label>List of Available Roles:</label>
+                    <select asp-for="Roles" asp-items="@items" class="form-control">
+                       
+                    </select>
+                </div>
+            </div>
+            <div class="row"></div>
+            <div class="row">
+                <div class="col-4">
+                    <button id="login-submit" type="submit" class="btn btn-primary btn-block">Submit Changes</button>
+                </div>
+                <!-- /.col -->
+            </div>
+        </form>
+        </div>
+    </div>
+</div>

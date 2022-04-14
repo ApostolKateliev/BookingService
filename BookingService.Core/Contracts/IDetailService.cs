@@ -11,7 +11,6 @@ namespace BookingService.Core.Contracts
         Task<bool> UpdateDetail(DetailEditViewModel model);
         Task<bool> AddDetail(AddDetailViewModel model);
 
-        //Task<bool> AddDetail(AddCarDetailViewModel model);
-
+        
     }
 }

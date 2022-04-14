@@ -8,6 +8,14 @@ namespace BookingService.Core.Models
 {
     public class ServiceListViewModel
     {
+       
+        public int Id { get; set; }
 
+        
+        public string? Type { get; set; }
+
+        public TimeSpan Duration { get; set; }
+
+        public string? CarDetail { get; set; }
     }
 }

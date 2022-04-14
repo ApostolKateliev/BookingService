@@ -1,6 +1,6 @@
-﻿@model IEnumerable<DetailListViewModel>
+﻿@model IEnumerable<ServiceListViewModel>
 @{
-    ViewData["Title"] = "Manage Car Details";
+    ViewData["Title"] = "Manage Provided Services";
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +14,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Car Details</h3>
+                        <h3 class="card-title">Provided Services</h3>
 
                         <div class="card-tools">
                         </div>
@@ -25,20 +25,22 @@
                             <thead>
                                 <tr>
 
-                                    <th>Car Detail</th>
-                                    <th>Specification</th>
+                                    <th>Type</th>
+                                    <th>Duration</th>
+                                    <th>For</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var detail in Model)
+                                @foreach (var service in Model)
                                 {
                                     <tr>
 
-                                        <td>@detail.Name</td>
-                                        <td>@detail.Specification</td>
+                                        <td>@service.Type</td>
+                                        <td>@service.Duration</td>
+                                        <td>@service.CarDetail</td>
                                         <td>
-                                            <a asp-area="admin" asp-action="edit" asp-controller="cardetail" asp-route-id="@detail.Id" class="btn btn-block bg-gradient-info btn-xs">Edit</a>
+                                            <a asp-area="admin" asp-action="edit" asp-controller="Service" asp-route-id="@service.Id" class="btn btn-block bg-gradient-info btn-xs">Edit</a>
                                         </td>
                                     </tr>
                                 }
@@ -55,7 +57,7 @@
         <!--Table ENd-->
         
         <div class="card-footer">
-            <a asp-area="admin" asp-controller="CarDetail" asp-action="AddDetail" type="submit" class="btn btn-primary">Add New Car Detail</a>
+            <a asp-area="admin" asp-controller="Service" asp-action="AddService" type="submit" class="btn btn-primary">Add New Service</a>
         </div>
        </div>
 

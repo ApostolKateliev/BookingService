@@ -127,10 +127,6 @@ namespace BookingService.Areas.Identity.Pages.Account
 
                     }
 
-                    
-
-                
-                    
                 }
                 if (result.RequiresTwoFactor)
                 {
