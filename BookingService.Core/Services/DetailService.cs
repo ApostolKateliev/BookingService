@@ -6,17 +6,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookingService.Core.Services
 {
-    public class CarDetailService : ICarDetailService
+    public class DetailService : IDetailService
     {
         private readonly IApplicationDbRepository repo;
-        public CarDetailService(IApplicationDbRepository _repo)
+        public DetailService(IApplicationDbRepository _repo)
         {
             repo = _repo;
         }
-        public async Task<IEnumerable<CarDetailListViewModel>> GetDetailsList()
+        public async Task<IEnumerable<DetailListViewModel>> GetDetailsList()
         {
             return await repo.All<CarDetail>()
-                .Select(c => new CarDetailListViewModel()
+                .Select(c => new DetailListViewModel()
                 {
                     Name = c.Name,
                     Specification = c.Specification
@@ -24,10 +24,10 @@ namespace BookingService.Core.Services
                 .ToListAsync();
         }
 
-        public async Task<CarDetailEditViewModel> GetDetailForEdit(int id)
+        public async Task<DetailEditViewModel> GetDetailForEdit(int id)
         {
             var detail = await repo.GetByIdAsync<CarDetail>(id);
-            return new CarDetailEditViewModel()
+            return new DetailEditViewModel()
             {
                 Id = detail.Id,
                 Name = detail.Name,
@@ -35,7 +35,7 @@ namespace BookingService.Core.Services
             };
         }
 
-        public async Task<bool> UpdateDetail(CarDetailEditViewModel model)
+        public async Task<bool> UpdateDetail(DetailEditViewModel model)
         {
             bool result = false;
 
@@ -45,6 +45,23 @@ namespace BookingService.Core.Services
             {
                 detail.Name = model.Name;
                 detail.Specification = model.Specification;
+                await repo.SaveChangesAsync();
+                result = true;
+            }
+            return result;
+        }
+
+        public async Task<bool> AddDetail(AddDetailViewModel model)
+        {
+            bool result = false;
+            var newDetail = new CarDetail
+            {
+                Name = model.Name,
+                Specification = model.Specification
+            };
+            if (newDetail != null)
+            {
+                await repo.AddAsync<CarDetail>(newDetail);
                 await repo.SaveChangesAsync();
                 result = true;
             }

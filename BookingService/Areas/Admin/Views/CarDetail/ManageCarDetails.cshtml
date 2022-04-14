@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CarDetailListViewModel>
+﻿@model IEnumerable<DetailListViewModel>
 @{
     ViewData["Title"] = "Manage Car Details";
 }
@@ -53,11 +53,11 @@
             </div>
         </div>
         <!--Table ENd-->
-        <form>
+        
         <div class="card-footer">
-            <button asp-area="admin" asp-controller="CarDetail" asp-action="AddDetail" type="submit" class="btn btn-primary">Add New Car Detail</button>
+            <a asp-area="admin" asp-controller="CarDetail" asp-action="AddDetail" type="submit" class="btn btn-primary">Add New Car Detail</a>
         </div>
-        </form>
+       
 
 </body>
 </html>
