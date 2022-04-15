@@ -6,80 +6,110 @@
 }
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>@ViewData["Title"]</title>
+    <meta charset="utf-8">
+    <title>@ViewData["Title"]</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="~/css/adminlte.min.css">
+    <!-- Favicon -->
+    <link href="~/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&family=Ubuntu:wght@400;500&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="~/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="~/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="~/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="~/css/style.css" rel="stylesheet">
 </head>
-<body class="hold-transition register-page">
-<div class="register-box">
-  <div class="card card-outline card-primary">
-    <div class="card-header text-center">
-      <a href="/" class="h1"><b>Booking Service</a>
-    </div>
-    <div class="card-body">
-      <p class="login-box-msg">Create a new account</p>
 
-      <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Topbar Start -->
+    <partial name="_HeaderInfo"     />
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h2 class="m-0 text-primary"><i class="fa fa-car me-3"></i>Kalvachev Folio</h2>
+        </a>
         
-        <div class="form-floating">
-                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
-                <label asp-for="Input.Email"></label>
-                <span class="fas fa-envelope"></span>
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-              <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
-              <label asp-for="Input.Password"></label>
-              <span class="fas fa-lock"></span>
-              <span asp-validation-for="Input.Password" class="text-danger"></span>
-          </div>
-          <div class="form-floating">
-            <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
-            <label asp-for="Input.ConfirmPassword"></label>
-            <span class="fas fa-lock"></span>
-            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-        </div>
-        <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="agreeTerms" name="terms" value="agree">
-              <!-- <label for="agreeTerms">
-               I agree to the <a href="#">terms</a>
-              </label> -->
-            </div>
-          </div>
-          <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Register</button>
-          </div>
-          <!-- /.col -->
-        </div>
-      </form>
-      <div class="col-md-6 col-md-offset-2">
+        
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Reg Start -->
+    <div class="container-fluid bg-secondary booking my-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row gx-5">
+                
+                <div class="col-lg-6">
+                    <div class="bg-primary h-100 d-flex flex-column justify-content-center text-center p-5 wow zoomIn" data-wow-delay="0.6s">
+                        <h1 class="text-white mb-4">Create a new account</h1>
+                        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="row g-3">
+
+                                <div class="col-12 col-sm-6">
+                                    <input asp-for="Input.Email" class="form-control" aria-required="true" type="text" class="form-control border-0" placeholder="Your Email" style="height: 55px;">
+                                    <span asp-validation-for="Input.Email" class="text-white"></span>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input asp-for="Input.Password" class="form-control" aria-required="true" type="password" class="form-control border-0" placeholder="Password" style="height: 55px;">
+                                    <span asp-validation-for="Input.Password" class="text-white"></span>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input asp-for="Input.ConfirmPassword" class="form-control" aria-required="true" type="password" class="form-control border-0" placeholder="Password" style="height: 55px;">
+                                    <span asp-validation-for="Input.ConfirmPassword" class="text-white"></span>
+                                </div>
+                                                               
+                                <div class="col-12">
+                                    <button class="btn btn-secondary w-100 py-3" type="submit">Register</button>
+                                </div>
+                            </div>
+                        </form>
+                        <span>
+                            <p>
+                </p>
+                        </span>
+						<div class="col-12">
                     <section>
-                        @*<h3>Use another service to log in.</h3>*@
-                        @*<hr />*@
+                       
                         @{
                             if ((Model.ExternalLogins?.Count ?? 0) != 0)
                             {
-                              
+
                                 <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                                    <div class="social-auth-links text-center mt-2 mb-3">
+                                    <div class="social-auth-links text-center">
                                         <p>
                                             @foreach (var provider in Model.ExternalLogins)
                                             {
-                                                <button type="submit" class="btn btn-block btn-primary" name="provider" value="@provider.Name" title="Sign up using your @provider.DisplayName account"><i class="fab fa-facebook mr-2"></i> Sign up using @provider.DisplayName </button>
+                                                <button id="login-submit" type="submit" class="btn btn-secondary w-100 py-3" name="provider" value="@provider.Name" ><i class="fab fa-facebook mr-2"></i> Sign Up using @provider.DisplayName </button>
                                             }
                                         </p>
                                     </div>
@@ -87,22 +117,34 @@
                             }
                         }
                     </section>
+                    <p class="mb-1">
+                        <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post" class="badge badge-light">I already have a membership</a>
+                    
+                </p>
                 </div>
-      
-
-      <a href="/" class="text-center">I already have a membership</a>
+						
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- /.form-box -->
-  </div><!-- /.card -->
-</div>
-<!-- /.register-box -->
+    <!-- Reg End -->
 
-<!-- jQuery -->
-<script src="~/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="~/js/adminlte.min.js"></script>
-<partial name="_ValidationScriptsPartial" />
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/wow/wow.min.js"></script>
+    <script src="~/lib/easing/easing.min.js"></script>
+    <script src="~/lib/waypoints/waypoints.min.js"></script>
+    <script src="~/lib/counterup/counterup.min.js"></script>
+    <script src="~/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="~/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="~/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="~/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="~/js/main.js"></script>
+    <partial name="_ValidationScriptsPartial" />
 </body>
+
 </html>
