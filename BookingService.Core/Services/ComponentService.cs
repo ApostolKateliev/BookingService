@@ -6,17 +6,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookingService.Core.Services
 {
-    public class DetailService : IDetailService
+    public class ComponentService : IComponentService
     {
         private readonly IApplicationDbRepository repo;
-        public DetailService(IApplicationDbRepository _repo)
+        public ComponentService(IApplicationDbRepository _repo)
         {
             repo = _repo;
         }
-        public async Task<IEnumerable<DetailListViewModel>> GetDetailsList()
+        public async Task<IEnumerable<ComponentListViewModel>> GetComponentsList()
         {
-            return await repo.All<CarDetail>()
-                .Select(c => new DetailListViewModel()
+            return await repo.All<Component>()
+                .Select(c => new ComponentListViewModel()
                 {
                     Name = c.Name,
                     Specification = c.Specification
@@ -24,22 +24,22 @@ namespace BookingService.Core.Services
                 .ToListAsync();
         }
 
-        public async Task<DetailEditViewModel> GetDetailForEdit(int id)
+        public async Task<EditComponentViewModel> GetComponentForEdit(string id)
         {
-            var detail = await repo.GetByIdAsync<CarDetail>(id);
-            return new DetailEditViewModel()
+            var component = await repo.GetByIdAsync<Component>(id);
+            return new EditComponentViewModel()
             {
-                Id = detail.Id,
-                Name = detail.Name,
-                Specification = detail.Specification
+                Id = component.Id.ToString(),
+                Name = component.Name,
+                Specification = component.Specification
             };
         }
 
-        public async Task<bool> UpdateDetail(DetailEditViewModel model)
+        public async Task<bool> UpdateComponent(EditComponentViewModel model)
         {
             bool result = false;
 
-            var detail = await repo.GetByIdAsync<CarDetail>(model.Id);
+            var detail = await repo.GetByIdAsync<Component>(model.Id);
 
             if (detail != null)
             {
@@ -51,11 +51,11 @@ namespace BookingService.Core.Services
             return result;
         }
 
-        public async Task<bool> AddDetail(AddDetailViewModel model)
+        public async Task<bool> AddComponent(AddComponentViewModel model)
         {
             bool result = false;
 
-            var newDetail = new CarDetail
+            var newComponent = new Component
             {
                 Name = model.Name,
                 Specification = model.Specification
@@ -64,7 +64,7 @@ namespace BookingService.Core.Services
             if (model != null)
             {
 
-                await repo.AddAsync(newDetail);
+                await repo.AddAsync(newComponent);
                 await repo.SaveChangesAsync();
                 result = true;
             }

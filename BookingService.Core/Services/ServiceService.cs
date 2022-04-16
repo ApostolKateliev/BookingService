@@ -17,12 +17,11 @@ namespace BookingService.Core.Services
         public async Task<IEnumerable<ServiceListViewModel>> GetServicesList()
         {
             return await repo.All<Service>()
-               .Select(c => new ServiceListViewModel()
+               .Select(s => new ServiceListViewModel()
                {
-                   Id = c.Id,
-                   Type = c.Type,
-                   Duration = c.Duration,
-                   CarDetail = c.CarDetail.ToString()
+                   Id = s.Id.ToString(),
+                   Name = s.Name,
+                   ComponentName = s.Component.Name
                })
                .ToListAsync();
         }

@@ -17,7 +17,7 @@ namespace BookingService.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.2")
+                .HasAnnotation("ProductVersion", "6.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -31,105 +31,75 @@ namespace BookingService.Infrastructure.Migrations
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("CraftsmanId")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("date");
 
-                    b.Property<DateTime>("DateAndTime")
-                        .HasColumnType("datetime2");
+                    b.Property<Guid>("ServiceId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("ServiceId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("WorkerId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.HasIndex("CraftsmanId");
-
                     b.HasIndex("ServiceId");
+
+                    b.HasIndex("WorkerId");
 
                     b.ToTable("Bookings");
                 });
 
-            modelBuilder.Entity("BookingService.Infrastructure.Data.DataModels.CarDetail", b =>
+            modelBuilder.Entity("BookingService.Infrastructure.Data.DataModels.Component", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Specification")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("CarDetails");
-                });
-
-            modelBuilder.Entity("BookingService.Infrastructure.Data.DataModels.Craftsman", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Craftsmen");
+                    b.ToTable("Components");
                 });
 
             modelBuilder.Entity("BookingService.Infrastructure.Data.DataModels.Service", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("uniqueidentifier");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("CarDetailId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("ComponentId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<TimeSpan>("Duration")
-                        .HasColumnType("time");
-
-                    b.Property<string>("Type")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CarDetailId");
+                    b.HasIndex("ComponentId");
 
                     b.ToTable("Services");
                 });
 
             modelBuilder.Entity("BookingService.Infrastructure.Data.DataModels.Vehicle", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("nvarchar(450)");
@@ -152,6 +122,26 @@ namespace BookingService.Infrastructure.Migrations
                     b.HasIndex("ApplicationUserId");
 
                     b.ToTable("Vehicles");
+                });
+
+            modelBuilder.Entity("BookingService.Infrastructure.Data.DataModels.Worker", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Workers");
                 });
 
             modelBuilder.Entity("BookingService.Infrastructure.Data.Identity.ApplicationUser", b =>
@@ -195,8 +185,7 @@ namespace BookingService.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
@@ -367,32 +356,32 @@ namespace BookingService.Infrastructure.Migrations
                         .WithMany("Bookings")
                         .HasForeignKey("ApplicationUserId");
 
-                    b.HasOne("BookingService.Infrastructure.Data.DataModels.Craftsman", "Craftsman")
-                        .WithMany("Bookings")
-                        .HasForeignKey("CraftsmanId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("BookingService.Infrastructure.Data.DataModels.Service", "Service")
                         .WithMany()
                         .HasForeignKey("ServiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Craftsman");
+                    b.HasOne("BookingService.Infrastructure.Data.DataModels.Worker", "Worker")
+                        .WithMany("Bookings")
+                        .HasForeignKey("WorkerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Service");
+
+                    b.Navigation("Worker");
                 });
 
             modelBuilder.Entity("BookingService.Infrastructure.Data.DataModels.Service", b =>
                 {
-                    b.HasOne("BookingService.Infrastructure.Data.DataModels.CarDetail", "CarDetail")
+                    b.HasOne("BookingService.Infrastructure.Data.DataModels.Component", "Component")
                         .WithMany()
-                        .HasForeignKey("CarDetailId")
+                        .HasForeignKey("ComponentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("CarDetail");
+                    b.Navigation("Component");
                 });
 
             modelBuilder.Entity("BookingService.Infrastructure.Data.DataModels.Vehicle", b =>
@@ -453,7 +442,7 @@ namespace BookingService.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("BookingService.Infrastructure.Data.DataModels.Craftsman", b =>
+            modelBuilder.Entity("BookingService.Infrastructure.Data.DataModels.Worker", b =>
                 {
                     b.Navigation("Bookings");
                 });

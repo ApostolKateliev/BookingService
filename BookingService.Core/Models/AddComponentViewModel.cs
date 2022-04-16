@@ -8,9 +8,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BookingService.Core.Models
 {
-    public class AddDetailViewModel
+    public class AddComponentViewModel
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
 
         [Required]

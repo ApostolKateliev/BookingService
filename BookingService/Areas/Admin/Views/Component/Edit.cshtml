@@ -1,10 +1,10 @@
-﻿@model AddDetailViewModel
+﻿@model EditComponentViewModel
 @{
-    ViewData["Title"] = "Add New Car Detail";
+    ViewData["Title"] = "Edit Component";
 }
 <div class="row">
     <div class="col-4">
-        <form id="add" method="post">
+        <form id="edit" method="post">
             <input type="hidden" name="Id" value="@Model.Id" />
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-floating">
@@ -24,7 +24,7 @@
                         
                         <div class="col-4">
 
-                            <button id="login-submit" type="submit" class="btn btn-primary btn-block">Add</button>
+                            <button id="login-submit" type="submit" class="btn btn-primary btn-block">Edit</button>
                         </div>
                         
                     </div>
@@ -35,4 +35,3 @@
 
 <partial name="_ValidationScriptsPartial" />
 }
-

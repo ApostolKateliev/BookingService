@@ -1,13 +1,10 @@
 using BookingService.Core.Constants;
 using BookingService.Infrastructure.Data;
+using BookingService.Infrastructure.Data.Identity;
 using BookingService.ModelBinders;
 using BookingService.Services;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using BookingService.Core.Models;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using BookingService.Infrastructure.Data.Identity;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,8 +22,6 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 })
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
-
-
 
 
 builder.Services.AddAuthentication().AddFacebook(options =>

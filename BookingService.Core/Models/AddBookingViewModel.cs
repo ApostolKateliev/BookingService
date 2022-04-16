@@ -13,11 +13,11 @@ namespace BookingService.Core.Models
         public string BookingId { get; set; }
 
         [Required]
-        public DateTime DateAndTime { get; set; }
+        public DateOnly Date { get; set; }
 
-        public string NameOfUser { get; set; }
+        public string? NameOfUser { get; set; }
 
-        public int PhoneForContact { get; set; }
+        public string? PhoneForContact { get; set; }
 
 
     }

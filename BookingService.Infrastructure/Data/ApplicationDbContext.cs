@@ -12,11 +12,15 @@ namespace BookingService.Infrastructure.Data
         {
         }
 
-        
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            
+            base.OnModelCreating(builder);
+        }
 
-        public DbSet<Craftsman> Craftsmen { get; set; }
+        public DbSet<Worker> Workers { get; set; }
         public DbSet<Booking> Bookings { get; set; }
-        public DbSet<CarDetail> CarDetails { get; set; }
+        public DbSet<Component> Components { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
     }

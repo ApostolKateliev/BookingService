@@ -2,14 +2,17 @@
 
 namespace BookingService.Infrastructure.Data.DataModels
 {
-    public class CarDetail
+    public class Component
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required]
-        public string Name { get; set; }
+        [StringLength(50)]
+        public string? Name { get; set; }
 
+
+        [StringLength(50)]
         public string? Specification { get; set; }
     }
 }

@@ -11,9 +11,9 @@ namespace BookingService.Core.Contracts
     {
         Task<IEnumerable<ServiceListViewModel>> GetServicesList();
 
-        //Task<ServiceEditViewModel> GetDetailForEdit(int id);
+        //Task<ServiceEditViewModel> GetDetailForEdit(string id);
 
-        //Task<bool> UpdateDetail(ServiceEditViewModel model);
-        //Task<bool> AddDetail(AddServiceViewModel model);
+        //Task<bool> UpdateService(ServiceEditViewModel model);
+        //Task<bool> AddService(AddServiceViewModel model);
     }
 }

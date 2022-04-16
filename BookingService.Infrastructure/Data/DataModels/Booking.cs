@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookingService.Infrastructure.Data.DataModels
 {
@@ -14,17 +9,18 @@ namespace BookingService.Infrastructure.Data.DataModels
         public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required]
-        public DateTime DateAndTime { get; set; }
+        [Column(TypeName = "date")]
+        public DateTime Date{ get; set; }
 
-        [Required]
-        [ForeignKey(nameof(Craftsman))]
-        public int CraftsmanId { get; set; }
-        public Craftsman Craftsman { get; set; }
+        
+        [ForeignKey(nameof(Worker))]
+        public Guid WorkerId { get; set; }
+        public Worker Worker { get; set; }
 
 
         [Required]
         [ForeignKey(nameof(Service))]
-        public int ServiceId { get; set; }
+        public Guid ServiceId { get; set; }
         public Service Service { get; set; }
 
     }
