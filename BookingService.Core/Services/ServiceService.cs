@@ -17,16 +17,18 @@ namespace BookingService.Core.Services
 
         public async Task AddService(AddServiceViewModel model)
         {
-            
+
             var newService = new Service()
             {
                 Name = model.Name,
+                Duration = model.Duration,
+                Price = model.Price,
                 Description = model.Description
 
             };
             try
             {
-                
+
                 await repo.AddAsync<Service>(newService);
                 await repo.SaveChangesAsync();
 
@@ -45,6 +47,8 @@ namespace BookingService.Core.Services
             {
                 Id = service.Id.ToString(),
                 Name = service.Name,
+                Duration = service.Duration,
+                Price = service.Price,
                 Description = service.Description
             };
         }
@@ -56,6 +60,8 @@ namespace BookingService.Core.Services
                {
                    Id = s.Id.ToString(),
                    Name = s.Name,
+                   Duration = s.Duration,
+                   Price = s.Price
                })
                .ToListAsync();
         }
@@ -69,6 +75,8 @@ namespace BookingService.Core.Services
             if (service != null)
             {
                 service.Name = model.Name;
+                service.Duration = model.Duration;
+                service.Price = model.Price;
                 service.Description = model.Description;
                 await repo.SaveChangesAsync();
                 result = true;

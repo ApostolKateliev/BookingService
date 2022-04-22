@@ -15,6 +15,7 @@ namespace BookingService.Services
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IServiceService, ServiceService>();
+            services.AddScoped<IBookingsService,BookingsService>();
            
 
             return services;

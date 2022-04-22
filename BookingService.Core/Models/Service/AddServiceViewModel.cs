@@ -6,9 +6,10 @@ namespace BookingService.Core.Models.Service
     {
         [Required]
         public string? Name { get; set; }
+        public string? Duration { get; set; }
+        public string? Price { get; set; }
 
        
-
         [StringLength(500)]
         public string? Description { get; set; }
     }

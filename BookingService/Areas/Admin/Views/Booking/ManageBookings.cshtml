@@ -1,6 +1,6 @@
-﻿@model IEnumerable<ServiceListViewModel>
+﻿@model IEnumerable<BookingListViewModel>
 @{
-    ViewData["Title"] = "Manage Provided Services";
+    ViewData["Title"] = "Manage Bookings";
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +14,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Provided Services</h3>
+                        <h3 class="card-title">Bookings</h3>
 
                         <div class="card-tools">
                         </div>
@@ -25,22 +25,27 @@
                             <thead>
                                 <tr>
 
-                                    <th>Name</th>
-                                    <th>Duration</th>
-                                    <th>Price</th>
+                                    <th>Date</th>
+                                    <th>Contact Name</th>
+                                    <th>Contact Number</th>
+                                    <th>Service</th>
+                                    <th>Additional info</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var service in Model)
+                                @foreach (var booking in Model)
                                 {
                                     <tr>
 
-                                        <td>@service.Name</td>
-                                        <td>@service.Duration</td>
-                                        <td>@service.Price</td>
+                                        <td>@booking.Date</td>
+                                        <td>@booking.ContactName</td>
+                                        <td>@booking.ContactPhoneNumber</td>
+                                        <td>@booking.Service</td>
+                                        <td>@booking.SpecialRequest</td>
+
                                         <td>
-                                            <a asp-area="admin" asp-action="editservice" asp-controller="Service" asp-route-id="@service.Id" class="btn btn-block bg-gradient-info btn-xs">Edit</a>
+                                            <a asp-area="admin" asp-action="edit" asp-controller="Booking" asp-route-id="@booking.Id" class="btn btn-block bg-gradient-info btn-xs">Edit</a>
                                         </td>
                                     </tr>
                                 }
@@ -56,9 +61,7 @@
         </div>
         <!--Table ENd-->
         
-        <div class="card-footer">
-            <a asp-area="admin" asp-controller="Service" asp-action="AddService" type="submit" class="btn btn-primary">Add New Service</a>
-        </div>
+       
        </div>
 
 </body>

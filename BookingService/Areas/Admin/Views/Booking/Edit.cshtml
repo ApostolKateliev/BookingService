@@ -1,0 +1,43 @@
+﻿@model EditBookingViewModel
+@{
+    ViewData["Title"] = "Edit Booking";
+}
+<div class="row">
+    <div class="col-4">
+        <form id="edit" method="post">
+            <input type="hidden" name="Id" value="@Model.Id" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-floating">
+                        <input asp-for="Date" class="form-control"  aria-required="true" />
+                        <label asp-for="Date" class="form-label"></label>
+                        <span class="fas fa-calendar-check"></span>
+                        <span asp-validation-for="Date" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating">
+                        <input asp-for="Service" class="form-control"  aria-required="true" />
+                        <label asp-for="Service" class="form-label"></label>
+                        <span class="fas fa-tools"></span>
+                        <span asp-validation-for="Service" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating">
+                        <input asp-for="SpecialRequest" class="form-control"  aria-required="true" />
+                        <label asp-for="SpecialRequest" class="form-label"></label>
+                        <span class="fas fa-file-signature"></span>
+                        <span asp-validation-for="SpecialRequest" class="text-danger"></span>
+                    </div>
+                   
+                    <div class="row">
+                        
+                        <div class="col-4">
+
+                            <button id="login-submit" type="submit" class="btn btn-primary btn-block">Edit</button>
+                        </div>
+                        
+                    </div>
+                </form>
+    </div>
+</div>
+@section Scripts{
+
+<partial name="_ValidationScriptsPartial" />
+}

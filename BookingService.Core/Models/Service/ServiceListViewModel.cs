@@ -13,6 +13,8 @@ namespace BookingService.Core.Models.Service
 
         
         public string? Name { get; set; }
+        public string? Duration { get; set; }
+        public string? Price { get; set; }
 
 
     }
