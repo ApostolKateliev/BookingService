@@ -10,7 +10,7 @@ namespace BookingService.Core.Models
 {
     public class AddComponentViewModel
     {
-        public string Id { get; set; }
+        
 
 
         [Required]

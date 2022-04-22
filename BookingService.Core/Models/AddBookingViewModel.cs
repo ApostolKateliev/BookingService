@@ -1,10 +1,4 @@
-﻿using BookingService.Infrastructure.Data.Identity;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BookingService.Core.Models
 {
@@ -18,6 +12,8 @@ namespace BookingService.Core.Models
         public string? NameOfUser { get; set; }
 
         public string? PhoneForContact { get; set; }
+
+        public string Service { get; set; }
 
 
     }

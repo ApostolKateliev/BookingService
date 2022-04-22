@@ -1,10 +1,5 @@
 ﻿using BookingService.Core.Models.User;
 using BookingService.Infrastructure.Data.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookingService.Core.Contracts
 {

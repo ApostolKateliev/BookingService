@@ -24,13 +24,8 @@ namespace BookingService.Areas.Admin.Controllers
 
         public IActionResult AddComponent()
         {
-            var newComponent = new AddComponentViewModel()
-            {
-                Name = " ",
-                Specification = " "
-            };
-            
-            return View(newComponent);
+                        
+            return View();
         }
 
 
