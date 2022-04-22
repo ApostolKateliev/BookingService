@@ -26,7 +26,6 @@
                                 <tr>
 
                                     <th>Type</th>
-                                    <th>For</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -36,9 +35,8 @@
                                     <tr>
 
                                         <td>@service.Name</td>
-                                        <td>@service.ComponentName</td>
                                         <td>
-                                            <a asp-area="admin" asp-action="edit" asp-controller="Service" asp-route-id="@service.Id" class="btn btn-block bg-gradient-info btn-xs">Edit</a>
+                                            <a asp-area="admin" asp-action="editservice" asp-controller="Service" asp-route-id="@service.Id" class="btn btn-block bg-gradient-info btn-xs">Edit</a>
                                         </td>
                                     </tr>
                                 }

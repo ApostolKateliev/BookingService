@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookingService.Core.Services
 {
-    internal class BookingService
+    public class BookingsService
     {
     }
 }

@@ -2,7 +2,7 @@
 
 namespace BookingService.Infrastructure.Data.DataModels
 {
-    public class Worker
+    public class Review
     {
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
@@ -11,10 +11,9 @@ namespace BookingService.Infrastructure.Data.DataModels
         [StringLength(40)]
         public string? Name { get; set; }
 
-        
-        [StringLength(10)]
-        public string? PhoneNumber { get; set; }
+        [Required]
+        [StringLength(200)]
+        public string? Body { get; set; }
 
-        public ICollection<Booking> Bookings { get; set; } = new List<Booking>();
     }
 }

@@ -1,6 +1,6 @@
-﻿@model IEnumerable<ComponentListViewModel>
+﻿@model IEnumerable<ProductListViewModel>
 @{
-    ViewData["Title"] = "Manage Components";
+    ViewData["Title"] = "Manage Products";
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +14,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Components</h3>
+                        <h3 class="card-title">Products</h3>
 
                         <div class="card-tools">
                         </div>
@@ -25,8 +25,8 @@
                             <thead>
                                 <tr>
 
-                                    <th>Component</th>
-                                    <th>Specification</th>
+                                    <th>Product</th>
+                                    <th>Description</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -36,9 +36,9 @@
                                     <tr>
 
                                         <td>@detail.Name</td>
-                                        <td>@detail.Specification</td>
+                                        <td>@detail.Description</td>
                                         <td>
-                                            <a asp-area="admin" asp-action="edit" asp-controller="Component" asp-route-id="@detail.Id" class="btn btn-block bg-gradient-info btn-xs">Edit Component</a>
+                                            <a asp-area="admin" asp-action="edit" asp-controller="Product" asp-route-id="@detail.Id" class="btn btn-block bg-gradient-info btn-xs">Edit Product</a>
                                         </td>
                                     </tr>
                                 }
@@ -55,7 +55,7 @@
         <!--Table ENd-->
         
         <div class="card-footer">
-            <a asp-area="admin" asp-controller="Component" asp-action="AddComponent" type="submit" class="btn btn-primary">Add New Component</a>
+            <a asp-area="admin" asp-controller="Product" asp-action="AddProduct" type="submit" class="btn btn-primary">Add New Product</a>
         </div>
        </div>
 

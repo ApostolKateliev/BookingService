@@ -2,7 +2,7 @@
 
 namespace BookingService.Infrastructure.Data.DataModels
 {
-    public class Component
+    public class Product
     {
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
@@ -12,7 +12,7 @@ namespace BookingService.Infrastructure.Data.DataModels
         public string? Name { get; set; }
 
 
-        [StringLength(50)]
-        public string? Specification { get; set; }
+        [StringLength(200)]
+        public string? Description { get; set; }
     }
 }

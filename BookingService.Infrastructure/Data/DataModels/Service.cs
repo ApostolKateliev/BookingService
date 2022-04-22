@@ -13,9 +13,11 @@ namespace BookingService.Infrastructure.Data.DataModels
 
         
         [Required]
-        [ForeignKey(nameof(Component))]
-        public Guid ComponentId { get; set; }
-        public Component Component { get; set; }
+        [StringLength(20)]
+        public string Duration { get; set; }
+
+        
+        public string Price { get; set; }
 
         [StringLength(500)]
         public string? Description { get; set; }

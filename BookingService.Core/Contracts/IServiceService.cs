@@ -1,9 +1,4 @@
-﻿using BookingService.Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BookingService.Core.Models.Service;
 
 namespace BookingService.Core.Contracts
 {
@@ -11,9 +6,9 @@ namespace BookingService.Core.Contracts
     {
         Task<IEnumerable<ServiceListViewModel>> GetServicesList();
 
-        //Task<ServiceEditViewModel> GetDetailForEdit(string id);
+        Task<EditServiceViewModel> GetServiceForEdit(string id);
 
-        //Task<bool> UpdateService(ServiceEditViewModel model);
-        //Task<bool> AddService(AddServiceViewModel model);
+        Task<bool> UpdateService(EditServiceViewModel model);
+        Task AddService(AddServiceViewModel model);
     }
 }

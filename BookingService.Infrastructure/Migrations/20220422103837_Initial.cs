@@ -50,29 +50,57 @@ namespace BookingService.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Components",
+                name: "Posts",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
+                    Body = table.Column<string>(type: "nvarchar(400)", maxLength: 400, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Posts", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Products",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Specification = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true)
+                    Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Components", x => x.Id);
+                    table.PrimaryKey("PK_Products", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Workers",
+                name: "Reviews",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true)
+                    Body = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Workers", x => x.Id);
+                    table.PrimaryKey("PK_Reviews", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Services",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Duration = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    Price = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Services", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -182,53 +210,15 @@ namespace BookingService.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Vehicles",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Make = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    Model = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    BodyType = table.Column<int>(type: "int", nullable: false),
-                    ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Vehicles", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Vehicles_AspNetUsers_ApplicationUserId",
-                        column: x => x.ApplicationUserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Services",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ComponentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Services", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Services_Components_ComponentId",
-                        column: x => x.ComponentId,
-                        principalTable: "Components",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-            
-            migrationBuilder.CreateTable(
                 name: "Bookings",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Date = table.Column<DateTime>(type: "date", nullable: false),
-                    WorkerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ContactName = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
+                    ContactPhoneNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     ServiceId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SpecialRequest = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
@@ -243,12 +233,6 @@ namespace BookingService.Infrastructure.Migrations
                         name: "FK_Bookings_Services_ServiceId",
                         column: x => x.ServiceId,
                         principalTable: "Services",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Bookings_Workers_WorkerId",
-                        column: x => x.WorkerId,
-                        principalTable: "Workers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -301,21 +285,6 @@ namespace BookingService.Infrastructure.Migrations
                 name: "IX_Bookings_ServiceId",
                 table: "Bookings",
                 column: "ServiceId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Bookings_WorkerId",
-                table: "Bookings",
-                column: "WorkerId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Services_ComponentId",
-                table: "Services",
-                column: "ComponentId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Vehicles_ApplicationUserId",
-                table: "Vehicles",
-                column: "ApplicationUserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -339,22 +308,22 @@ namespace BookingService.Infrastructure.Migrations
                 name: "Bookings");
 
             migrationBuilder.DropTable(
-                name: "Vehicles");
+                name: "Posts");
+
+            migrationBuilder.DropTable(
+                name: "Products");
+
+            migrationBuilder.DropTable(
+                name: "Reviews");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Services");
-
-            migrationBuilder.DropTable(
-                name: "Workers");
-
-            migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Components");
+                name: "Services");
         }
     }
 }

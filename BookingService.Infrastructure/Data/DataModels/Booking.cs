@@ -12,16 +12,19 @@ namespace BookingService.Infrastructure.Data.DataModels
         [Column(TypeName = "date")]
         public DateTime Date{ get; set; }
 
-        
-        [ForeignKey(nameof(Worker))]
-        public Guid WorkerId { get; set; }
-        public Worker Worker { get; set; }
+        [StringLength(40)]
+        public string ContactName { get; set; }
 
+        [StringLength(20)]
+        public string ContactPhoneNumber { get; set; }
 
         [Required]
         [ForeignKey(nameof(Service))]
         public Guid ServiceId { get; set; }
         public Service Service { get; set; }
+
+        [StringLength(200)]
+        public string SpecialRequest { get; set; }
 
     }
 }

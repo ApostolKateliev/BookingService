@@ -18,10 +18,10 @@ namespace BookingService.Infrastructure.Data
             base.OnModelCreating(builder);
         }
 
-        public DbSet<Worker> Workers { get; set; }
+        public DbSet<Review> Reviews { get; set; }
         public DbSet<Booking> Bookings { get; set; }
-        public DbSet<Component> Components { get; set; }
+        public DbSet<Product> Products { get; set; }
         public DbSet<Service> Services { get; set; }
-        public DbSet<Vehicle> Vehicles { get; set; }
+        public DbSet<Post> Posts { get; set; }
     }
 }

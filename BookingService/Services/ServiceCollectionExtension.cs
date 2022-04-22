@@ -13,8 +13,9 @@ namespace BookingService.Services
 
             services.AddScoped<IApplicationDbRepository,ApplicationDbRepository>();
             services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IComponentService, ComponentService>();
+            services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IServiceService, ServiceService>();
+           
 
             return services;
         }

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BookingService.Core.Models
+namespace BookingService.Core.Models.Booking
 {
     public class AddBookingViewModel
     {
