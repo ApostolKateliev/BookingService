@@ -1,0 +1,37 @@
+﻿@model AddPostViewModel
+@{
+    ViewData["Title"] = "Add New Post";
+}
+<div class="row">
+    <div class="col-4">
+        <form id="add" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-floating">
+                        <input asp-for="Title" class="form-control"  aria-required="true" />
+                        <label asp-for="Title" class="form-label"></label>
+                        <span class="far fa-newspaper"></span>
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating">
+                        <input asp-for="Body" class="form-control"  aria-required="true" />
+                        <label asp-for="Body" class="form-label"></label>
+                        <span class="fas fa-file-signature"></span>
+                        <span asp-validation-for="Body" class="text-danger"></span>
+                    </div>
+                   
+                    <div class="row">
+                        
+                        <div class="col-4">
+
+                            <button asp-controller="Post" asp-action="AddPost" id="login-submit" type="submit" class="btn btn-primary btn-block">Add Post</button>
+                        </div>
+                        
+                    </div>
+                </form>
+    </div>
+</div>
+@section Scripts{
+
+<partial name="_ValidationScriptsPartial" />
+}
+

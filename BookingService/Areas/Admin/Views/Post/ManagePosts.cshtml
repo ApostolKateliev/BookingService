@@ -1,0 +1,61 @@
+﻿@model IEnumerable<PostListViewModel>
+@{
+    ViewData["Title"] = "Manage Posts";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+
+
+        <!--Table Start-->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Posts</h3>
+
+                        <div class="card-tools">
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-hover text-nowrap">
+                            <thead>
+                                <tr>
+
+                                    <th>Post</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var post in Model)
+                                {
+                                    <tr>
+
+                                        <td>@post.Title</td>
+                                        <td>
+                                            <a asp-area="admin" asp-action="edit" asp-controller="Post" asp-route-id="@post.Id" class="btn btn-block bg-gradient-info btn-xs">Edit Post</a>
+                                        </td>
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+        <!--Table ENd-->
+        
+        <div class="card-footer">
+            <a asp-area="admin" asp-controller="Post" asp-action="AddPost" type="submit" class="btn btn-primary">Add New Post</a>
+        </div>
+       </div>
+
+</body>
+</html>
