@@ -9,6 +9,7 @@ namespace BookingService.Core.Contracts
         Task<EditProductViewModel> GetProductForEdit(string id);
 
         Task<bool> UpdateProduct(EditProductViewModel model);
+        
         Task AddProduct(AddProductViewModel model);
 
 

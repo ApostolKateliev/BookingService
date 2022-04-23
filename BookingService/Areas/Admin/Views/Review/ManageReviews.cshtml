@@ -1,0 +1,64 @@
+﻿@model IEnumerable<ReviewListViewModel>
+@{
+    ViewData["Title"] = "Manage Reviews";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+
+
+        <!--Table Start-->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Reviews</h3>
+
+                        <div class="card-tools">
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-hover text-nowrap">
+                            <thead>
+                                <tr>
+
+                                    <th>Client Name</th>
+                                    <th>Review</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var review in Model)
+                                {
+                                    <form id="delete" method="post">
+                                    <input type="hidden" name="Id" value="@review.Id" />
+                                    <tr>
+
+                                        <td>@review.Name</td>
+                                        <td>@review.Body</td>
+                                        <td>
+                                            <a asp-area="admin" asp-action="delete" asp-controller="Review" class="btn btn-block btn-danger btn-xs">Delete Review</a>
+                                        </td>
+                                    </tr>
+                                    </form>
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+        <!--Table ENd-->
+        
+        
+       </div>
+
+</body>
+</html>
