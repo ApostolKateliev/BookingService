@@ -10,6 +10,8 @@ namespace BookingService.Core.Models.Post
         [StringLength(40)]
         public string? Title { get; set; }
 
-        
+        public string? Body { get; set; }
+
+
     }
 }
