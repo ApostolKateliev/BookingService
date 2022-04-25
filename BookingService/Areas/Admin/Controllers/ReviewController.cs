@@ -1,6 +1,5 @@
 ﻿using BookingService.Core.Constants;
 using BookingService.Core.Contracts;
-using BookingService.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookingService.Areas.Admin.Controllers
@@ -25,8 +24,10 @@ namespace BookingService.Areas.Admin.Controllers
         public async Task<ActionResult> Delete(string id)
         {
             await service.DeleteReview(id);
+
             ViewData[MessageConstant.WarningMessage] = "You Have Deleted the review!";
-            return View();
+
+            return RedirectToAction(nameof(ManageReviews));
         }
     }
 }

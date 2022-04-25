@@ -37,6 +37,8 @@ namespace BookingService.Infrastructure.Data.Common
             return DbSet<T>().AsQueryable();
         }
 
+        
+
         public IQueryable<T> All<T>(Expression<Func<T, bool>> search) where T : class
         {
             return this.DbSet<T>().Where(search).AsQueryable();

@@ -16,7 +16,7 @@ namespace BookingService.Controllers
 
         public IActionResult Index()
         {
-            ViewData[MessageConstant.SuccessMessage] = "You Have Successfully Logged in!";
+            //ViewData[MessageConstant.SuccessMessage] = "You Have Successfully Logged in!";
             return View();
         }
 
@@ -28,10 +28,7 @@ namespace BookingService.Controllers
         {
             return View();
         }
-        public IActionResult Service()
-        {
-            return View();
-        }
+        
 
         
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

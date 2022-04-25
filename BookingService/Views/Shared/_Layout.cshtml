@@ -30,6 +30,7 @@
 
     <!-- Template Stylesheet -->
     <link href="~/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/plugins/toastr/toastr.min.css"/>
     @await RenderSectionAsync("Head",false)
 </head>
 
@@ -61,7 +62,7 @@
                 <a asp-controller="Home" asp-action="Index" class="nav-item nav-link">Home</a>
                 <a asp-controller="Booking" asp-action="AddBooking" class="nav-item nav-link">Booking</a>
                 <a asp-controller="Home" asp-action="About" class="nav-item nav-link">About Us</a>
-                <a asp-controller="Home" asp-action="Service" class="nav-item nav-link">Services</a>
+                <a asp-controller="Service" asp-action="Service" class="nav-item nav-link">Services</a>
                 <a asp-controller="Home" asp-action="Contact" class="nav-item nav-link">Contact Us</a>
                 <a asp-controller="Product" asp-action="Products" class="nav-item nav-link">Products</a>
                 <a asp-controller="Faq" asp-action="FAQ" class="nav-item nav-link">FAQ</a>
@@ -114,6 +115,7 @@
 
     <!-- Template Javascript -->
     <script src="~/js/main.js"></script>
+    <script src="~/plugins/toastr/toastr.min.js"></script>
     <partial name="_UserMessages"/> 
    @await RenderSectionAsync("Scripts",false)
 </body>

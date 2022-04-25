@@ -7,5 +7,7 @@ namespace BookingService.Core.Contracts
         Task DeleteReview(string id);
 
         Task<IEnumerable<ReviewListViewModel>> GetReviewsList();
+
+        Task AddReview(AddReviewViewModel model);
     }
 }

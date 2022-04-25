@@ -39,5 +39,28 @@ namespace BookingService.Core.Services
                 })
                 .ToListAsync();
         }
+
+        public async Task AddReview(AddReviewViewModel model)
+        {
+
+
+            var newReview = new Review()
+            {
+                Name = model.Name,
+                Body = model.Body
+            };
+            try
+            {
+                await repo.AddAsync<Review>(newReview);
+                await repo.SaveChangesAsync();
+
+            }
+            catch (Exception ae)
+            {
+
+                throw new Exception("The Review wasn`t added!");
+            }
+
+        }
     }
 }

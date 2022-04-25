@@ -65,7 +65,7 @@ namespace BookingService.Areas.Admin.Controllers
 
             ViewData[MessageConstant.SuccessMessage] = "You Have Successfully Added a New product!";
 
-
+            ModelState.Clear();
             return View(model);
         }
 

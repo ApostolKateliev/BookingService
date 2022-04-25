@@ -23,7 +23,7 @@ namespace BookingService.Areas.Admin.Controllers
 
         public IActionResult AddService()
         {
-
+            
             return View();
         }
 
