@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ServiceListViewModel>
+@{
+    ViewData["Title"] = "Services";
+}
+<!-- Page Header Start -->
+<div class="container-fluid page-header mb-5 p-0" style="background-image: url(../../../img/carousel-bg-2.jpg);">
+    <div class="container-fluid page-header-inner py-5">
+        <div class="container text-center">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Services</h1>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+<!-- FAQ Start -->
+<div class="container-xxl service py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="text-primary text-uppercase">// Our services //</h6>
+            <h1 class="mb-5">What do we offer?</h1>
+        </div>
+
+        <div class="row g-4 wow fadeInUp" data-wow-delay="0.3s">
+
+            @foreach (var service in Model)
+            {
+                <div class="col-12">
+                <p>
+                    <button class="btn btn-secondary w-100 py-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        @service.Name
+                    </button>
+                </p>
+
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body">
+                        <div class="d-flex bg-light py-3 px-4">
+                              <i class="fas fa-clock fa-3x text-primary flex-shrink-0"></i>
+                                <div class="ps-4">
+                                    <h6 class="mb-2">Duration:</h6> 
+                                    <p class="mb-0">@service.Duration</p>
+                                </div>
+                        </div>
+                        <div class="d-flex bg-light py-3 px-4">
+                              <i class="fas fa-coins fa-3x text-primary flex-shrink-0"></i>
+                                <div class="ps-4">
+                                    <h6 class="mb-2">Price:</h6>
+                                    <p class="mb-0">@service.Price</p>
+                                </div>
+                        </div>
+                        <div class="d-flex bg-light py-3 px-4">
+                              <i class="fas fa-info-circle fa-3x text-primary flex-shrink-0"></i>
+                                <div class="ps-4">
+                                    <h6 class="mb-2">Description:</h6>
+                                        <p class="mb-0">@service.Description</p>
+                                </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                </div>
+            }
+
+        </div>
+
+    </div>
+</div>

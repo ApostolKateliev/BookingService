@@ -37,7 +37,7 @@ namespace BookingService.Core.Services
 
         public async Task<EditPostViewModel> GetPostForEdit(string id)
         {
-            var post = await repo.GetByIdAsync<Post>(id);
+            var post = await repo.GetByIdAsync<Post>(Guid.Parse(id));
             return new EditPostViewModel()
             {
                 Id = post.Id.ToString(),
@@ -61,7 +61,7 @@ namespace BookingService.Core.Services
         {
             bool result = false;
 
-            var post = await repo.GetByIdAsync<Post>(model.Id);
+            var post = await repo.GetByIdAsync<Post>(Guid.Parse(model.Id));
 
             if (post != null)
             {

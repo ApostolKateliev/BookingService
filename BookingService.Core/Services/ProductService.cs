@@ -28,7 +28,7 @@ namespace BookingService.Core.Services
 
         public async Task<EditProductViewModel> GetProductForEdit(string id)
         {
-            var product = await repo.GetByIdAsync<Product>(id);
+            var product = await repo.GetByIdAsync<Product>(Guid.Parse(id));
             return new EditProductViewModel()
             {
                 Id = product.Id.ToString(),
@@ -41,7 +41,7 @@ namespace BookingService.Core.Services
         {
             bool result = false;
 
-            var product = await repo.GetByIdAsync<Product>(model.Id);
+            var product = await repo.GetByIdAsync<Product>(Guid.Parse(model.Id));
 
             if (product != null)
             {

@@ -57,7 +57,7 @@ namespace BookingService.Core.Services
 
         public async Task<EditBookingViewModel> GetBookingForEdit(string id)
         {
-            var booking = await repo.GetByIdAsync<Booking>(id);
+            var booking = await repo.GetByIdAsync<Booking>(Guid.Parse(id));
             return new EditBookingViewModel()
             {
                 Id = booking.Id.ToString(),
@@ -96,7 +96,7 @@ namespace BookingService.Core.Services
         {
             bool result = false;
 
-            var booking = await repo.GetByIdAsync<Booking>(model.Id);
+            var booking = await repo.GetByIdAsync<Booking>(Guid.Parse(model.Id));
             var bookingDate = booking.Date.ToString();
             if (booking != null)
             {

@@ -42,7 +42,7 @@ namespace BookingService.Core.Services
 
         public async Task<EditServiceViewModel> GetServiceForEdit(string id)
         {
-            var service = await repo.GetByIdAsync<Service>(id);
+            var service = await repo.GetByIdAsync<Service>(Guid.Parse(id));
             return new EditServiceViewModel()
             {
                 Id = service.Id.ToString(),
@@ -61,7 +61,8 @@ namespace BookingService.Core.Services
                    Id = s.Id.ToString(),
                    Name = s.Name,
                    Duration = s.Duration,
-                   Price = s.Price
+                   Price = s.Price,
+                   Description = s.Description
                })
                .ToListAsync();
         }
@@ -70,7 +71,7 @@ namespace BookingService.Core.Services
         {
             bool result = false;
 
-            var service = await repo.GetByIdAsync<Service>(model.Id);
+            var service = await repo.GetByIdAsync<Service>(Guid.Parse(model.Id));
 
             if (service != null)
             {
