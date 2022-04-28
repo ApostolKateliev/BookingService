@@ -1,4 +1,4 @@
-﻿using BookingService.Core.Constants;
+﻿using BookingService.Core.Contracts;
 using BookingService.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -8,15 +8,17 @@ namespace BookingService.Controllers
     public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IReviewService _service;
 
-        public HomeController(ILogger<HomeController> logger)
+
+        public HomeController(ILogger<HomeController> logger, IReviewService service)
         {
             _logger = logger;
+            _service = service;
         }
 
         public IActionResult Index()
         {
-            //ViewData[MessageConstant.SuccessMessage] = "You Have Successfully Logged in!";
             return View();
         }
 
@@ -24,9 +26,10 @@ namespace BookingService.Controllers
         {
             return View();
         }
-        public IActionResult About()
+        public async Task<IActionResult> About()
         {
-            return View();
+            var reviews = await _service.GetReviewsList();
+            return View(reviews);
         }
         
 

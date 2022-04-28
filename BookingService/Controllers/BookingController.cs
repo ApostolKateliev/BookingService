@@ -1,7 +1,6 @@
 ﻿using BookingService.Core.Contracts;
 using BookingService.Core.Models.Booking;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BookingService.Controllers
 {
@@ -27,7 +26,7 @@ namespace BookingService.Controllers
 
             await service.AddBooking(model);
 
-            ModelState.Clear();
+            
             return View(model);
         }
 

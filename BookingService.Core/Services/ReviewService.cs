@@ -34,6 +34,7 @@ namespace BookingService.Core.Services
             return await repo.All<Review>()
                 .Select(r => new ReviewListViewModel()
                 {
+                    Id = r.Id.ToString(),
                     Name = r.Name,
                     Body = r.Body
                 })

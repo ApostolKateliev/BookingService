@@ -72,6 +72,7 @@ namespace BookingService.Core.Services
             return await repo.All<Booking>()
                 .Select(b => new BookingListViewModel()
                 {
+                    Id = b.Id.ToString(),
                     Date = b.Date.ToString(),
                     ContactName = b.ContactName,
                     ContactPhoneNumber = b.ContactPhoneNumber,

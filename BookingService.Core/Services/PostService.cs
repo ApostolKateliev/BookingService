@@ -51,6 +51,7 @@ namespace BookingService.Core.Services
             return await repo.All<Post>()
                 .Select(t => new PostListViewModel()
                 {
+                    Id = t.Id.ToString(),
                     Title = t.Title,
                     Body = t.Body
                 })

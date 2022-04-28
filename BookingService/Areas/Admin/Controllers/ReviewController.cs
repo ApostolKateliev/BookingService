@@ -21,13 +21,11 @@ namespace BookingService.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Delete(string id)
+        public async Task<IActionResult> Remove(string id)
         {
             await service.DeleteReview(id);
 
-            ViewData[MessageConstant.WarningMessage] = "You Have Deleted the review!";
-
-            return RedirectToAction(nameof(ManageReviews));
+            return View();
         }
     }
 }

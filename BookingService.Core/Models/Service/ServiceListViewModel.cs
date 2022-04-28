@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BookingService.Core.Models.Service
+﻿namespace BookingService.Core.Models.Service
 {
     public class ServiceListViewModel
     {

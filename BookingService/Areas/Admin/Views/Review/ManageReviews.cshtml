@@ -40,7 +40,7 @@
                                         <td>@review.Name</td>
                                         <td class="d-inline-block text-truncate" style="max-width: 150px;">@review.Body</td>
                                         <td>
-                                            <a asp-area="admin" asp-action="delete" asp-controller="Review" class="btn btn-block btn-danger btn-xs">Delete Review</a>
+                                            <a asp-area="admin" asp-action="Remove" asp-controller="Review" asp-route-id="@review.Id" class="btn btn-block btn-danger btn-xs">Remove Review</a>
                                         </td>
                                     </tr>
                                     </form>
