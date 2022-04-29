@@ -30,6 +30,7 @@ builder.Services.AddAuthentication().AddFacebook(options =>
     options.AppSecret = builder.Configuration.GetValue<string>("Facebook:AppSecret");
 });
 
+builder.Services.AddCors();
 builder.Services.AddControllersWithViews()
     .AddMvcOptions(options =>
     {
@@ -58,6 +59,12 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseCors(x => x
+.AllowAnyMethod()
+.AllowAnyHeader()
+.SetIsOriginAllowed(origin => true)
+.AllowCredentials());
 
 //Authentication should be first
 app.UseAuthentication();

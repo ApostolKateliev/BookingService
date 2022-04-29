@@ -24,8 +24,7 @@ namespace BookingService.Controllers
 
             await service.AddReview(model);
 
-            ModelState.Clear();
-            return View(model);
+            return View("Confirmation");
         }
     }
 }

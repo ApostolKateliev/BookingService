@@ -27,7 +27,7 @@ namespace BookingService.Controllers
             await service.AddBooking(model);
 
             
-            return View(model);
+            return View("Success");
         }
 
     }
