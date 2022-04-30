@@ -62,9 +62,8 @@ app.UseRouting();
 
 app.UseCors(x => x
 .AllowAnyMethod()
-.AllowAnyHeader()
-.SetIsOriginAllowed(origin => true)
-.AllowCredentials());
+.AllowAnyOrigin()
+.AllowAnyHeader());
 
 //Authentication should be first
 app.UseAuthentication();

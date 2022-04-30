@@ -59,6 +59,7 @@ namespace BookingService.Core.Services
         public async Task<ApplicationUser> GetUserById(string id)
         {
             return await repo.GetByIdAsync<ApplicationUser>(id);
+            
         }
     }
 }

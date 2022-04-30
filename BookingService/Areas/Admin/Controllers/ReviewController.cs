@@ -20,7 +20,7 @@ namespace BookingService.Areas.Admin.Controllers
             return View(reviews);
         }
 
-        [HttpDelete]
+        [HttpPost]
         public async Task<IActionResult> Remove(string id)
         {
             await service.DeleteReview(id);
